@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Single permission card — inflated dynamically for each permission -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/color_perm_card_bg"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/color_card_stroke"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding">
+
+        <!-- Row: icon + title + status chip -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- Permission icon -->
+            <TextView
+                android:id="@+id/tv_perm_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:background="@drawable/bg_icon_circle"
+                android:layout_marginEnd="12dp" />
+
+            <!-- Title + subtitle -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_perm_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/color_on_surface"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tv_perm_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/color_on_surface_variant"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Status icon (✓ or ✗) -->
+            <TextView
+                android:id="@+id/tv_perm_status_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_divider"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Why description -->
+        <TextView
+            android:id="@+id/tv_perm_why"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/color_on_surface_variant"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginBottom="14dp" />
+
+        <!-- Action button -->
+        <Button
+            android:id="@+id/btn_perm_action"
+            style="@style/Widget.RideAutoAcceptor.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Enable" />
+
+        <!-- Granted label (visible when granted, hides button) -->
+        <TextView
+            android:id="@+id/tv_perm_granted"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="✅  Permission Granted"
+            android:textSize="14sp"
+            android:textColor="@color/color_perm_granted"
+            android:fontFamily="sans-serif-medium"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
