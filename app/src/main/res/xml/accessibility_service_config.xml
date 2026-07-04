@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Accessibility Service configuration for Ride Auto-Acceptor.
+    Targets specific ride-hailing driver apps to read screen content and
+    perform automated clicks on Accept buttons.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewScrolled"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagReportViewIds|flagRetrieveInteractiveWindows|flagRequestEnhancedWebAccessibility"
+    android:canRetrieveWindowContent="true"
+    android:canPerformGestures="false"
+    android:description="@string/accessibility_service_description"
+    android:notificationTimeout="100"
+    android:packageNames="com.olacabs.oladriver,com.rapido.captain,com.roppenlabs.rapido.captain,com.ubercab.driver,com.porter.partner,com.theporter.partnerapp,com.sap.indrive.driver"
+    android:settingsActivity=".MainActivity" />
