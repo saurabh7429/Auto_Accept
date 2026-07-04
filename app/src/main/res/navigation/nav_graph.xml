@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/permissionsFragment">
+
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.rideautoacceptor.ui.onboarding.PermissionsFragment"
+        android:label="@string/nav_permissions"
+        tools:layout="@layout/fragment_permissions" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.rideautoacceptor.ui.dashboard.DashboardFragment"
+        android:label="@string/nav_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.rideautoacceptor.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/activityLogFragment"
+        android:name="com.rideautoacceptor.ui.log.ActivityLogFragment"
+        android:label="@string/nav_log"
+        tools:layout="@layout/fragment_activity_log" />
+
+</navigation>
