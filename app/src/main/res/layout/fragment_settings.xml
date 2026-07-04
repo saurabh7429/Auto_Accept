@@ -70,32 +70,69 @@
                     android:paddingBottom="8dp">
 
                     <!-- Ola -->
-                    <include layout="@layout/item_app_toggle"
-                        android:id="@+id/toggle_ola" />
-                    <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:background="@color/color_divider" />
+                    <LinearLayout android:id="@+id/row_ola"
+                        android:layout_width="match_parent" android:layout_height="56dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:id="@+id/tv_icon_ola" android:layout_width="36dp" android:layout_height="36dp" android:gravity="center" android:textSize="20sp" android:layout_marginEnd="12dp" android:text="🟢"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_name_ola" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="@color/color_on_surface" android:fontFamily="sans-serif-medium" android:text="@string/app_ola"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="@color/color_text_hint" android:text="com.olacabs.oladriver"/>
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switch_ola" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/color_divider"/>
 
                     <!-- Rapido -->
-                    <include layout="@layout/item_app_toggle"
-                        android:id="@+id/toggle_rapido" />
-                    <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:background="@color/color_divider" />
+                    <LinearLayout android:id="@+id/row_rapido"
+                        android:layout_width="match_parent" android:layout_height="56dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:id="@+id/tv_icon_rapido" android:layout_width="36dp" android:layout_height="36dp" android:gravity="center" android:textSize="20sp" android:layout_marginEnd="12dp" android:text="⚡"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_name_rapido" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="@color/color_on_surface" android:fontFamily="sans-serif-medium" android:text="@string/app_rapido"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="@color/color_text_hint" android:text="com.rapido.captain"/>
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switch_rapido" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/color_divider"/>
 
                     <!-- Uber -->
-                    <include layout="@layout/item_app_toggle"
-                        android:id="@+id/toggle_uber" />
-                    <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:background="@color/color_divider" />
+                    <LinearLayout android:id="@+id/row_uber"
+                        android:layout_width="match_parent" android:layout_height="56dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:id="@+id/tv_icon_uber" android:layout_width="36dp" android:layout_height="36dp" android:gravity="center" android:textSize="20sp" android:layout_marginEnd="12dp" android:text="🚗"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_name_uber" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="@color/color_on_surface" android:fontFamily="sans-serif-medium" android:text="@string/app_uber"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="@color/color_text_hint" android:text="com.ubercab.driver"/>
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switch_uber" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/color_divider"/>
 
                     <!-- Porter -->
-                    <include layout="@layout/item_app_toggle"
-                        android:id="@+id/toggle_porter" />
-                    <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:background="@color/color_divider" />
+                    <LinearLayout android:id="@+id/row_porter"
+                        android:layout_width="match_parent" android:layout_height="56dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:id="@+id/tv_icon_porter" android:layout_width="36dp" android:layout_height="36dp" android:gravity="center" android:textSize="20sp" android:layout_marginEnd="12dp" android:text="📦"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_name_porter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="@color/color_on_surface" android:fontFamily="sans-serif-medium" android:text="@string/app_porter"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="@color/color_text_hint" android:text="com.porter.partner"/>
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switch_porter" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/color_divider"/>
 
                     <!-- InDrive (Phase 2) -->
-                    <include layout="@layout/item_app_toggle"
-                        android:id="@+id/toggle_indrive" />
+                    <LinearLayout android:id="@+id/row_indrive"
+                        android:layout_width="match_parent" android:layout_height="56dp"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:alpha="0.4">
+                        <TextView android:id="@+id/tv_icon_indrive" android:layout_width="36dp" android:layout_height="36dp" android:gravity="center" android:textSize="20sp" android:layout_marginEnd="12dp" android:text="🚕"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_name_indrive" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="@color/color_on_surface" android:fontFamily="sans-serif-medium" android:text="@string/app_indrive"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="@color/color_text_hint" android:text="com.sap.indrive.driver"/>
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switch_indrive" android:layout_width="wrap_content" android:layout_height="wrap_content" android:enabled="false"/>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

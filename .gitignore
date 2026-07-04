@@ -1,0 +1,33 @@
+# Git ignore file for Android project
+# Build outputs
+/build/
+app/build/
+
+# Local configuration (contains SDK path — do NOT commit)
+local.properties
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Android Studio / IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Log files
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

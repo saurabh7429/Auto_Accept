@@ -77,13 +77,13 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Permission cards container -->
-            <LinearLayout
-                android:id="@+id/container_permissions"
+            <!-- Permission cards list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_permissions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:divider="@null" />
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
 
             <!-- Proceed to dashboard button -->
             <Button
