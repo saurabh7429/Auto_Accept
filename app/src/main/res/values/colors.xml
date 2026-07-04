@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Brand Colors ─────────────────────────────────────── -->
+    <!-- Primary: Rich green — "GO" signal for accept -->
+    <color name="color_primary">#00C853</color>
+    <color name="color_primary_dark">#00953D</color>
+    <color name="color_primary_container">#0D2B18</color>
+    <color name="color_on_primary">#FFFFFF</color>
+
+    <!-- Secondary: Warm amber — dashboard accents -->
+    <color name="color_secondary">#FFB300</color>
+    <color name="color_secondary_container">#2B2000</color>
+
+    <!-- Error: Bright red — declined / status error -->
+    <color name="color_error">#FF4444</color>
+    <color name="color_error_container">#2B0000</color>
+
+    <!-- ── Background & Surface ──────────────────────────────── -->
+    <color name="color_background">#0F0F1A</color>
+    <color name="color_surface">#1A1A2E</color>
+    <color name="color_surface_variant">#222236</color>
+    <color name="color_surface_elevated">#252540</color>
+
+    <!-- ── Text Colors ───────────────────────────────────────── -->
+    <color name="color_on_background">#F0F0FF</color>
+    <color name="color_on_surface">#E8E8FF</color>
+    <color name="color_on_surface_variant">#9090B0</color>
+    <color name="color_text_hint">#5C5C7A</color>
+
+    <!-- ── Status Colors ─────────────────────────────────────── -->
+    <color name="color_status_active">#00C853</color>
+    <color name="color_status_inactive">#5C5C7A</color>
+    <color name="color_accepted">#00C853</color>
+    <color name="color_skipped">#FFB300</color>
+    <color name="color_skipped_text">#FF8800</color>
+
+    <!-- ── App Chip Colors ───────────────────────────────────── -->
+    <color name="color_ola_brand">#00C853</color>
+    <color name="color_rapido_brand">#FFD700</color>
+    <color name="color_uber_brand">#FFFFFF</color>
+    <color name="color_porter_brand">#FF6B35</color>
+    <color name="color_indrive_brand">#00BCD4</color>
+
+    <!-- ── Divider / Border ──────────────────────────────────── -->
+    <color name="color_divider">#2A2A44</color>
+    <color name="color_card_stroke">#2E2E50</color>
+
+    <!-- ── Toggle ────────────────────────────────────────────── -->
+    <color name="color_toggle_on">#00C853</color>
+    <color name="color_toggle_off">#3A3A5A</color>
+
+    <!-- ── Permission Status ─────────────────────────────────── -->
+    <color name="color_perm_granted">#00C853</color>
+    <color name="color_perm_denied">#FF4444</color>
+    <color name="color_perm_card_bg">#1E1E35</color>
+
+    <!-- ── Transparent ───────────────────────────────────────── -->
+    <color name="color_transparent">#00000000</color>
+    <color name="color_overlay_scrim">#80000000</color>
+</resources>

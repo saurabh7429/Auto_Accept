@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base theme — dark, Material 3 inspired -->
+    <style name="Theme.RideAutoAcceptor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/color_primary_dark</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/color_background</item>
+
+        <!-- Error -->
+        <item name="colorError">@color/color_error</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="android:windowBackground">@color/color_background</item>
+
+        <!-- Surface -->
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="colorSurfaceVariant">@color/color_surface_variant</item>
+
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/color_on_surface</item>
+        <item name="android:textColorSecondary">@color/color_on_surface_variant</item>
+        <item name="android:textColorHint">@color/color_text_hint</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/color_background</item>
+        <item name="android:navigationBarColor">@color/color_surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
+        <!-- MaterialCardView defaults -->
+        <item name="materialCardViewStyle">@style/Widget.RideAutoAcceptor.CardView</item>
+
+        <!-- Bottom navigation -->
+        <item name="bottomNavigationStyle">@style/Widget.RideAutoAcceptor.BottomNavigation</item>
+
+        <!-- Switch -->
+        <item name="switchStyle">@style/Widget.RideAutoAcceptor.Switch</item>
+
+        <!-- TextInputLayout -->
+        <item name="textInputStyle">@style/Widget.RideAutoAcceptor.TextInput</item>
+
+        <!-- Shape appearance -->
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.RideAutoAcceptor.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.RideAutoAcceptor.Large</item>
+    </style>
+
+    <!-- Card -->
+    <style name="Widget.RideAutoAcceptor.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="strokeColor">@color/color_card_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.RideAutoAcceptor.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/color_surface</item>
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="itemRippleColor">@color/color_primary</item>
+    </style>
+
+    <!-- Switch -->
+    <style name="Widget.RideAutoAcceptor.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="colorControlActivated">@color/color_primary</item>
+    </style>
+
+    <!-- Text Input -->
+    <style name="Widget.RideAutoAcceptor.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/color_card_stroke</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxBackgroundColor">@color/color_surface_variant</item>
+        <item name="hintTextColor">@color/color_on_surface_variant</item>
+        <item name="android:textColorHint">@color/color_text_hint</item>
+    </style>
+
+    <!-- Shapes -->
+    <style name="ShapeAppearance.RideAutoAcceptor.Medium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="ShapeAppearance.RideAutoAcceptor.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!-- ── Text Styles ─────────────────────────────────────────────────────── -->
+    <style name="TextAppearance.RideAutoAcceptor.H1">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/color_on_surface</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="TextAppearance.RideAutoAcceptor.H2">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/color_on_surface</item>
+    </style>
+
+    <style name="TextAppearance.RideAutoAcceptor.Body">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_on_surface_variant</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
+    <style name="TextAppearance.RideAutoAcceptor.Caption">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_text_hint</item>
+    </style>
+
+    <style name="TextAppearance.RideAutoAcceptor.Stat">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/color_primary</item>
+    </style>
+
+    <!-- ── Button Styles ──────────────────────────────────────────────────── -->
+    <style name="Widget.RideAutoAcceptor.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/color_primary</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="Widget.RideAutoAcceptor.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/color_primary</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+    </style>
+
+    <!-- ── Chip Style ─────────────────────────────────────────────────────── -->
+    <style name="Widget.RideAutoAcceptor.Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">@color/color_on_surface_variant</item>
+        <item name="chipBackgroundColor">@color/color_surface_variant</item>
+        <item name="chipStrokeColor">@color/color_card_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconTint">@color/color_primary</item>
+    </style>
+
+    <!-- Splash / Launch screen -->
+    <style name="Theme.RideAutoAcceptor.SplashScreen" parent="Theme.RideAutoAcceptor">
+        <item name="android:windowBackground">@color/color_background</item>
+    </style>
+</resources>

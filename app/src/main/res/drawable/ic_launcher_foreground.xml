@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App launcher / notification icon — stylised "A" checkmark in green -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background circle -->
+    <path
+        android:fillColor="#0F0F1A"
+        android:pathData="M0,0 L108,0 L108,108 L0,108 Z" />
+
+    <!-- Green circle badge -->
+    <path
+        android:fillColor="#00C853"
+        android:pathData="M54,16 C74.435,16 91,32.565 91,53 C91,73.435 74.435,90 54,90 C33.565,90 17,73.435 17,53 C17,32.565 33.565,16 54,16 Z" />
+
+    <!-- White checkmark / bolt symbol -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="0"
+        android:pathData="M44,53 L50,60 L66,40"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,53 C42,53 41,52 42,51 L44,49 C45,48 46,49 46,50 L49.5,57 L63,38 C64,37 65,37 66,38 L68,40 C69,41 68,42 68,42 L51,65 C50,66 49,66 48,65 Z" />
+</vector>

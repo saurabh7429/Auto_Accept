@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Ride Auto-Acceptor</string>
+    <string name="app_tagline">Smart Automation for Ride-Hailing Drivers</string>
+    <string name="accessibility_service_label">Ride Auto-Acceptor</string>
+    <string name="accessibility_service_description">Reads fare and distance from ride request popups and automatically clicks Accept when your criteria are met.</string>
+    <string name="notification_service_label">Ride Notification Listener</string>
+
+    <!-- ── Bottom Navigation ─────────────────────────────────────────────── -->
+    <string name="nav_permissions">Setup</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_settings">Filters</string>
+    <string name="nav_log">Log</string>
+
+    <!-- ── Screen 1: Permissions Onboarding ─────────────────────────────── -->
+    <string name="screen_setup_title">Setup &amp; Permissions</string>
+    <string name="screen_setup_subtitle">Grant these permissions once to enable full automation</string>
+    <string name="all_permissions_granted">All permissions granted! You\'re ready to go.</string>
+    <string name="permissions_incomplete">Please grant all permissions to start automation.</string>
+
+    <!-- Permission: Accessibility -->
+    <string name="perm_accessibility_title">Accessibility Service</string>
+    <string name="perm_accessibility_subtitle">स्क्रीन से किराया और दूरी पढ़ने के लिए (To read fare &amp; distance from screen)</string>
+    <string name="perm_accessibility_why">Ride Auto-Acceptor needs Accessibility permission to read the fare amount (e.g., ₹89) and distances (e.g., 1.6 km) shown on ride request popups — and to tap the Accept button on your behalf.\n\nआपकी screen पर दिखाई देने वाले ride request popup से fare और distance पढ़ने के लिए यह permission जरूरी है।</string>
+    <string name="perm_accessibility_action">Enable Accessibility</string>
+
+    <!-- Permission: Notification Listener -->
+    <string name="perm_notification_title">Notification Access</string>
+    <string name="perm_notification_subtitle">Ride requests को notification से detect करने के लिए</string>
+    <string name="perm_notification_why">Notification Access allows the app to detect ride requests the moment they arrive — even if you\'re on a different screen.\n\nजब भी कोई ride request आए, तुरंत detect हो सके — इसके लिए notification access जरूरी है।</string>
+    <string name="perm_notification_action">Enable Notification Access</string>
+
+    <!-- Permission: Display Over Apps -->
+    <string name="perm_overlay_title">Display Over Other Apps</string>
+    <string name="perm_overlay_subtitle">दूसरे apps के ऊपर status दिखाने के लिए</string>
+    <string name="perm_overlay_why">This permission lets Ride Auto-Acceptor show a small status indicator while you\'re using other apps (like navigation).\n\nजब आप दूसरे apps use कर रहे हों, तब भी automation status दिखाने के लिए यह permission चाहिए।</string>
+    <string name="perm_overlay_action">Enable Display Over Apps</string>
+
+    <!-- Permission: Battery Optimization -->
+    <string name="perm_battery_title">Ignore Battery Optimization</string>
+    <string name="perm_battery_subtitle">Background में बिना रुके चलते रहने के लिए</string>
+    <string name="perm_battery_why">Without this, Android may pause the app in the background, causing you to miss ride requests.\n\nBattery optimization से app background में रुक सकती है और ride requests miss हो सकती हैं। इसे disable करना जरूरी है।</string>
+    <string name="perm_battery_action">Disable Battery Optimization</string>
+
+    <!-- Permission status chips -->
+    <string name="perm_status_granted">Granted ✓</string>
+    <string name="perm_status_required">Required — Tap to enable</string>
+
+    <!-- ── Screen 2: Dashboard ────────────────────────────────────────────── -->
+    <string name="screen_dashboard_title">Dashboard</string>
+    <string name="automation_enabled">Automation is ON</string>
+    <string name="automation_disabled">Automation is OFF</string>
+    <string name="toggle_hint_enable">Tap to start auto-accepting rides</string>
+    <string name="toggle_hint_disable">Tap to pause automation</string>
+    <string name="service_status_listening">🟢 Listening for ride requests…</string>
+    <string name="service_status_inactive">⚪ Service inactive — enable toggle above</string>
+    <string name="service_status_no_accessibility">🔴 Accessibility permission required</string>
+    <string name="stat_today_accepted">Accepted Today</string>
+    <string name="stat_today_skipped">Skipped Today</string>
+    <string name="last_event_label">Last Event</string>
+    <string name="no_events_yet">No rides processed yet today</string>
+
+    <!-- ── Screen 3: Filter Settings ─────────────────────────────────────── -->
+    <string name="screen_settings_title">Filter Criteria</string>
+    <string name="settings_subtitle">All filters are optional. Leave disabled to accept all rides.</string>
+
+    <string name="section_apps">Supported Apps</string>
+    <string name="app_ola">Ola Partner</string>
+    <string name="app_rapido">Rapido Captain</string>
+    <string name="app_uber">Uber Driver</string>
+    <string name="app_porter">Porter Partner</string>
+    <string name="app_indrive">InDrive (Phase 2)</string>
+
+    <string name="section_filters">Ride Criteria</string>
+    <string name="filter_max_pickup">Max Pickup Distance</string>
+    <string name="filter_max_pickup_hint">e.g. 2.0</string>
+    <string name="filter_max_pickup_desc">Accept only if pickup distance ≤ this value</string>
+    <string name="filter_min_drop">Min Ride Distance</string>
+    <string name="filter_min_drop_hint">e.g. 3.0</string>
+    <string name="filter_min_drop_desc">Accept only if drop distance ≥ this value</string>
+    <string name="filter_min_fare">Min Fare Amount (₹)</string>
+    <string name="filter_min_fare_hint">e.g. 60</string>
+    <string name="filter_min_fare_desc">Accept only if fare ≥ this amount</string>
+    <string name="unit_km">km</string>
+    <string name="unit_rupee">₹</string>
+    <string name="save_settings">Settings saved</string>
+
+    <!-- ── Screen 4: Activity Log ─────────────────────────────────────────── -->
+    <string name="screen_log_title">Activity Log</string>
+    <string name="log_filter_all">All</string>
+    <string name="log_filter_accepted">Accepted</string>
+    <string name="log_filter_skipped">Skipped</string>
+    <string name="log_empty_all">No events yet. Enable automation to start.</string>
+    <string name="log_empty_accepted">No accepted rides yet.</string>
+    <string name="log_empty_skipped">No skipped rides yet.</string>
+    <string name="log_clear_all">Clear All</string>
+    <string name="log_clear_confirm">Clear all %d log entries?</string>
+    <string name="log_cleared">Log cleared</string>
+    <string name="log_deleted">Entry deleted</string>
+    <string name="undo">Undo</string>
+
+    <!-- Generic -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes, Clear</string>
+    <string name="loading">Loading…</string>
+</resources>
