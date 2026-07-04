@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Single row in the Activity Log RecyclerView -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/color_surface"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/color_card_stroke"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Left accent bar (green=accepted, amber=skipped) -->
+        <View
+            android:id="@+id/view_accent_bar"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="14dp"
+            android:minHeight="48dp"
+            android:background="@color/color_accepted" />
+
+        <!-- Center: main info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Row 1: App name + action badge -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:id="@+id/tv_app_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_on_surface"
+                    android:fontFamily="sans-serif-medium" />
+
+                <!-- Action badge chip -->
+                <TextView
+                    android:id="@+id/tv_action_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@drawable/bg_badge_accepted" />
+            </LinearLayout>
+
+            <!-- Row 2: Fare + distances -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:id="@+id/tv_fare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/color_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_distances"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+                    android:textColor="@color/color_on_surface_variant" />
+            </LinearLayout>
+
+            <!-- Row 3: Skip reason (only shown when skipped) -->
+            <TextView
+                android:id="@+id/tv_skip_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/color_skipped_text"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Right: timestamp -->
+        <TextView
+            android:id="@+id/tv_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/color_text_hint"
+            android:layout_marginStart="8dp"
+            android:gravity="end" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

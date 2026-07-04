@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reusable row for each app toggle in settings -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <!-- App emoji icon -->
+    <TextView
+        android:id="@+id/tv_app_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginEnd="12dp" />
+
+    <!-- App name -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/color_on_surface"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/tv_app_package"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="@color/color_text_hint"
+            android:layout_marginTop="1dp" />
+    </LinearLayout>
+
+    <!-- Toggle -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_app_enabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
