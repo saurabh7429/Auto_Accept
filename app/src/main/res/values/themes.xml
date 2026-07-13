@@ -92,33 +92,39 @@
     </style>
 
     <!-- ── Text Styles ─────────────────────────────────────────────────────── -->
-    <style name="TextAppearance.RideAutoAcceptor.H1">
+    <!-- Base — required so dot-notation sub-styles resolve correctly -->
+    <style name="TextAppearance.RideAutoAcceptor" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/color_on_surface</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.RideAutoAcceptor.H1" parent="TextAppearance.RideAutoAcceptor">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">28sp</item>
         <item name="android:textColor">@color/color_on_surface</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
-    <style name="TextAppearance.RideAutoAcceptor.H2">
+    <style name="TextAppearance.RideAutoAcceptor.H2" parent="TextAppearance.RideAutoAcceptor">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/color_on_surface</item>
     </style>
 
-    <style name="TextAppearance.RideAutoAcceptor.Body">
+    <style name="TextAppearance.RideAutoAcceptor.Body" parent="TextAppearance.RideAutoAcceptor">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_on_surface_variant</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
 
-    <style name="TextAppearance.RideAutoAcceptor.Caption">
+    <style name="TextAppearance.RideAutoAcceptor.Caption" parent="TextAppearance.RideAutoAcceptor">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/color_text_hint</item>
     </style>
 
-    <style name="TextAppearance.RideAutoAcceptor.Stat">
+    <style name="TextAppearance.RideAutoAcceptor.Stat" parent="TextAppearance.RideAutoAcceptor">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/color_primary</item>

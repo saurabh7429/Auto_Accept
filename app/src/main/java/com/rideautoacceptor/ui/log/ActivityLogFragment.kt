@@ -62,7 +62,9 @@ class ActivityLogFragment : Fragment() {
                                 target: RecyclerView.ViewHolder) = false
 
             override fun onSwiped(vh: RecyclerView.ViewHolder, direction: Int) {
-                val event = adapter.peek(vh.adapterPosition) ?: return
+                val pos = vh.bindingAdapterPosition
+                if (pos == RecyclerView.NO_ID.toInt()) return
+                val event = adapter.peek(pos) ?: return
                 viewModel.deleteEvent(event)
                 Snackbar.make(binding.root, R.string.log_deleted, Snackbar.LENGTH_SHORT)
                     .setAction(R.string.undo) {

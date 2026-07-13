@@ -69,6 +69,8 @@ class AutomationAccessibilityService : AccessibilityService() {
     //  Lifecycle
     // ═════════════════════════════════════════════════════════════════════════
 
+    private var isForeground = false
+
     override fun onServiceConnected() {
         super.onServiceConnected()
         Log.i(TAG, "✅ Service connected")
@@ -85,17 +87,33 @@ class AutomationAccessibilityService : AccessibilityService() {
             repository.filterPrefsFlow.collect { prefs ->
                 currentPrefs = prefs
                 Log.d(TAG, "Prefs updated: enabled=${prefs.isEnabled}")
+
+                if (prefs.isEnabled) {
+                    if (!isForeground) {
+                        startForegroundService()
+                    }
+                } else {
+                    if (isForeground) {
+                        stopForegroundService()
+                    }
+                }
             }
         }
-
-        // Start foreground so we stay alive
-        startForegroundService()
 
         // Prune old events on start
         serviceScope.launch { repository.pruneOldEvents() }
 
         // Broadcast status
         broadcastStatus(true)
+    }
+
+    private fun stopForegroundService() {
+        try {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error stopping foreground service", e)
+        }
+        isForeground = false
     }
 
     override fun onDestroy() {
@@ -169,6 +187,9 @@ class AutomationAccessibilityService : AccessibilityService() {
 
             // ── Quick heuristic check before parsing ──────────────────────────
             if (!RideParser.looksLikeRideRequest(allText)) return
+
+            // Check non-compulsory permissions and log warnings if missing
+            checkAndLogPermissionWarnings()
 
             // ── Parse ride data ───────────────────────────────────────────────
             val parsed = RideParser.parse(allText)
@@ -340,6 +361,60 @@ class AutomationAccessibilityService : AccessibilityService() {
         }
     }
 
+    private fun checkAndLogPermissionWarnings() {
+        val ctx = applicationContext
+
+        // Wrap Settings.canDrawOverlays in strict try-catch as requested
+        val overlayGranted = try {
+            android.provider.Settings.canDrawOverlays(ctx)
+        } catch (e: SecurityException) {
+            Log.e(TAG, "SecurityException checking overlays", e)
+            false
+        } catch (e: Exception) {
+            Log.e(TAG, "Error checking overlays", e)
+            false
+        }
+
+        // Wrap battery optimization checks in strict try-catch
+        val pm = ctx.getSystemService(android.content.Context.POWER_SERVICE) as android.os.PowerManager
+        val batteryIgnored = try {
+            pm.isIgnoringBatteryOptimizations(ctx.packageName)
+        } catch (e: SecurityException) {
+            Log.e(TAG, "SecurityException checking battery optimization", e)
+            false
+        } catch (e: Exception) {
+            Log.e(TAG, "Error checking battery optimization", e)
+            false
+        }
+
+        if (!overlayGranted) {
+            logWarningEvent("System Alert Window", "[Warning] Could not draw overlay - Permission missing")
+        }
+        if (!batteryIgnored) {
+            logWarningEvent("Battery Optimizer", "[Warning] Battery optimizations active - Service may be throttled")
+        }
+    }
+
+    private fun logWarningEvent(source: String, message: String) {
+        serviceScope.launch(Dispatchers.IO) {
+            val event = RideEvent(
+                packageName      = "system.warning",
+                appName          = source,
+                fareAmount       = null,
+                pickupDistanceKm = null,
+                dropDistanceKm   = null,
+                action           = "WARNING",
+                skipReason       = message
+            )
+            val id = repository.insertEvent(event)
+            // Notify UI via broadcast
+            val uiIntent = Intent(Constants.ACTION_RIDE_EVENT).apply {
+                putExtra(Constants.EXTRA_RIDE_EVENT_ID, id)
+            }
+            sendBroadcast(uiIntent)
+        }
+    }
+
     // ═════════════════════════════════════════════════════════════════════════
     //  Foreground Service Notification
     // ═════════════════════════════════════════════════════════════════════════
@@ -362,7 +437,12 @@ class AutomationAccessibilityService : AccessibilityService() {
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .build()
 
-        startForeground(Constants.NOTIFICATION_ID, notification)
+        try {
+            startForeground(Constants.NOTIFICATION_ID, notification)
+            isForeground = true
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to start foreground service", e)
+        }
     }
 
     private fun createNotificationChannel() {

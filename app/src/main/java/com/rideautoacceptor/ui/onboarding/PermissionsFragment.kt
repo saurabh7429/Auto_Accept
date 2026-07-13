@@ -16,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.util.Log
 import com.rideautoacceptor.R
 import com.rideautoacceptor.databinding.FragmentPermissionsBinding
 import com.rideautoacceptor.service.AutomationAccessibilityService
@@ -116,36 +117,63 @@ class PermissionsFragment : Fragment() {
     )
 
     private fun handlePermissionAction(item: PermissionItem) {
+        val ctx = context ?: return
         when (item.id) {
             ID_ACCESSIBILITY -> {
-                startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                try {
+                    startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                } catch (e: Exception) {
+                    Log.e("Permissions", "Failed to open accessibility settings", e)
+                }
             }
             ID_NOTIFICATION -> {
-                startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+                try {
+                    startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+                } catch (e: Exception) {
+                    Log.e("Permissions", "Failed to open notification settings", e)
+                }
             }
             ID_OVERLAY -> {
-                val intent = Intent(
-                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                    Uri.parse("package:${requireContext().packageName}")
-                )
-                startActivity(intent)
+                try {
+                    val intent = Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:${ctx.packageName}")
+                    )
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Log.w("Permissions", "Could not request overlay with package Uri, trying general settings", e)
+                    try {
+                        startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
+                    } catch (ex: Exception) {
+                        Log.e("Permissions", "Failed to open overlay settings", ex)
+                    }
+                }
             }
             ID_BATTERY -> {
-                val intent = Intent(
-                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                    Uri.parse("package:${requireContext().packageName}")
-                )
-                startActivity(intent)
+                try {
+                    val intent = Intent(
+                        Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                        Uri.parse("package:${ctx.packageName}")
+                    )
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Log.w("Permissions", "ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS failed, trying fallback settings", e)
+                    try {
+                        startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
+                    } catch (ex: Exception) {
+                        Log.e("Permissions", "Failed to open battery optimization settings", ex)
+                    }
+                }
             }
         }
     }
 
     private fun updateAllStatuses() {
-        val ctx = requireContext()
-        val accessibilityGranted = isAccessibilityEnabled(ctx)
-        val notificationGranted  = isNotificationListenerEnabled(ctx)
-        val overlayGranted       = Settings.canDrawOverlays(ctx)
-        val batteryGranted       = isBatteryOptimizationIgnored(ctx)
+        val ctx = context ?: return
+        val accessibilityGranted = try { isAccessibilityEnabled(ctx) } catch (e: Exception) { false }
+        val notificationGranted  = try { isNotificationListenerEnabled(ctx) } catch (e: Exception) { false }
+        val overlayGranted       = try { Settings.canDrawOverlays(ctx) } catch (e: Exception) { false }
+        val batteryGranted       = try { isBatteryOptimizationIgnored(ctx) } catch (e: Exception) { false }
 
         adapter.updateGrantStatus(ID_ACCESSIBILITY, accessibilityGranted)
         adapter.updateGrantStatus(ID_NOTIFICATION,  notificationGranted)
@@ -159,15 +187,14 @@ class PermissionsFragment : Fragment() {
             binding.tvOverallStatusIcon.text  = "✅"
             binding.tvOverallStatus.text      = getString(R.string.all_permissions_granted)
             binding.cardOverallStatus.setCardBackgroundColor(
-                requireContext().getColor(R.color.color_primary_container))
-            binding.btnProceed.isVisible = true
+                ctx.getColor(R.color.color_primary_container))
         } else {
             binding.tvOverallStatusIcon.text  = "⚠️"
             binding.tvOverallStatus.text      = getString(R.string.permissions_incomplete)
             binding.cardOverallStatus.setCardBackgroundColor(
-                requireContext().getColor(R.color.color_surface_variant))
-            binding.btnProceed.isVisible = false
+                ctx.getColor(R.color.color_surface_variant))
         }
+        binding.btnProceed.isVisible = true
     }
 
     // ── Permission Checks ─────────────────────────────────────────────────────

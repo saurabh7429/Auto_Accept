@@ -55,22 +55,37 @@ class RideEventAdapter : PagingDataAdapter<RideEvent, RideEventAdapter.EventView
         holder.tvDistances.text = parts.joinToString("  ")
 
         // Action badge + accent color
-        if (event.action == RideEvent.ACTION_ACCEPTED) {
-            holder.tvBadge.text = "✅ ACCEPTED"
-            holder.tvBadge.setBackgroundResource(R.drawable.bg_badge_accepted)
-            holder.tvBadge.setTextColor(ctx.getColor(R.color.color_accepted))
-            holder.accentBar.setBackgroundColor(ctx.getColor(R.color.color_accepted))
-            holder.tvSkipReason.visibility = View.GONE
-        } else {
-            holder.tvBadge.text = "⏭ SKIPPED"
-            holder.tvBadge.setBackgroundResource(R.drawable.bg_badge_skipped)
-            holder.tvBadge.setTextColor(ctx.getColor(R.color.color_skipped_text))
-            holder.accentBar.setBackgroundColor(ctx.getColor(R.color.color_skipped))
-            event.skipReason?.let { reason ->
-                holder.tvSkipReason.text = "Reason: $reason"
-                holder.tvSkipReason.visibility = View.VISIBLE
-            } ?: run {
+        when (event.action) {
+            RideEvent.ACTION_ACCEPTED -> {
+                holder.tvBadge.text = "✅ ACCEPTED"
+                holder.tvBadge.setBackgroundResource(R.drawable.bg_badge_accepted)
+                holder.tvBadge.setTextColor(ctx.getColor(R.color.color_accepted))
+                holder.accentBar.setBackgroundColor(ctx.getColor(R.color.color_accepted))
                 holder.tvSkipReason.visibility = View.GONE
+            }
+            "WARNING" -> {
+                holder.tvBadge.text = "⚠️ WARNING"
+                holder.tvBadge.setBackgroundResource(R.drawable.bg_badge_skipped)
+                holder.tvBadge.setTextColor(ctx.getColor(R.color.color_skipped_text))
+                holder.accentBar.setBackgroundColor(ctx.getColor(R.color.color_skipped))
+                event.skipReason?.let { reason ->
+                    holder.tvSkipReason.text = reason
+                    holder.tvSkipReason.visibility = View.VISIBLE
+                } ?: run {
+                    holder.tvSkipReason.visibility = View.GONE
+                }
+            }
+            else -> {
+                holder.tvBadge.text = "⏭ SKIPPED"
+                holder.tvBadge.setBackgroundResource(R.drawable.bg_badge_skipped)
+                holder.tvBadge.setTextColor(ctx.getColor(R.color.color_skipped_text))
+                holder.accentBar.setBackgroundColor(ctx.getColor(R.color.color_skipped))
+                event.skipReason?.let { reason ->
+                    holder.tvSkipReason.text = "Reason: $reason"
+                    holder.tvSkipReason.visibility = View.VISIBLE
+                } ?: run {
+                    holder.tvSkipReason.visibility = View.GONE
+                }
             }
         }
     }

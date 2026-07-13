@@ -5,6 +5,8 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
 import com.rideautoacceptor.util.Constants
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.cancel
 
 /**
  * RideNotificationListenerService
@@ -26,7 +28,29 @@ class RideNotificationListenerService : NotificationListenerService() {
         private const val TAG = "NotifListenerService"
     }
 
+    private val serviceScope = kotlinx.coroutines.CoroutineScope(
+        kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.IO
+    )
+    private lateinit var prefsManager: com.rideautoacceptor.data.local.PreferencesManager
+    @Volatile private var isEnabled = false
+
+    override fun onCreate() {
+        super.onCreate()
+        prefsManager = com.rideautoacceptor.data.local.PreferencesManager(applicationContext)
+        serviceScope.launch {
+            prefsManager.filterPrefsFlow.collect { prefs ->
+                isEnabled = prefs.isEnabled
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        serviceScope.cancel()
+    }
+
     override fun onNotificationPosted(sbn: StatusBarNotification) {
+        if (!isEnabled) return
         val pkg = sbn.packageName ?: return
         if (!Constants.SUPPORTED_PACKAGES.contains(pkg)) return
 
@@ -54,3 +78,4 @@ class RideNotificationListenerService : NotificationListenerService() {
         Log.w(TAG, "Notification listener disconnected")
     }
 }
+
